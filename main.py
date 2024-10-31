@@ -1,15 +1,11 @@
-from fastapi import BackgroundTasks, FastAPI, Body, Form 
+from fastapi import BackgroundTasks, FastAPI, Form 
 from pydantic import BaseModel
-from typing import List
 import numpy as np
 from pymongo import MongoClient
-from tensorflow.keras.models import load_model  # type: ignore
 from model import compile_siamese_network
-from preprocess import hex_to_vector
-from sklearn.cluster import KMeans
+from convert_template import hex_to_vector
 from datetime import datetime
 
-from dataset_train import hex_strings
 # Crear una instancia de FastAPI
 app = FastAPI()
 
@@ -18,9 +14,8 @@ client = MongoClient('mongodb+srv://luortiz:321@cluster0.n3xcu.mongodb.net/')
 db = client['bioaccess']
 collection_huellas = db['huellas']
 collection_accesos = db["accesos"]
-# Cargar el modelo Siamese CNN entrenado una sola vez
 
-# Definir el path de los pesos guardados
+# Definir el path de los pesos guardados (modelo ML)
 model_path = 'siamese_model.keras'
 # Definir la forma de entrada (Tamaño fijo de los templates)
 input_shape = (512,)
@@ -28,7 +23,7 @@ input_shape = (512,)
 model = compile_siamese_network(input_shape)
 model.load_weights(model_path)
 
-# Modelo de datos esperado por el servidor
+# Modelo de datos esperado por el servidor para el registro
 class TemplateData(BaseModel):
     cedula: str
     template1: str
@@ -36,10 +31,6 @@ class TemplateData(BaseModel):
     template3: str
     template4: str
     template5: str
-    template6: str
-    template7: str
-    template8: str
-    template9: str
 
 class FingerprintRequest(BaseModel):
     templates: TemplateData
@@ -53,11 +44,7 @@ async def registrar_usuario(data: FingerprintRequest):
         data.templates.template2,
         data.templates.template3,
         data.templates.template4,
-        data.templates.template5,
-        data.templates.template6,
-        data.templates.template7,
-        data.templates.template8,
-        data.templates.template9
+        data.templates.template5
     ]
 
     # Convertir las cadenas hexadecimales en vectores numéricos
@@ -77,20 +64,19 @@ async def registrar_usuario(data: FingerprintRequest):
 # Ruta de autenticación para comparar huellas con el modelo Siamese
 @app.post("/autenticar_huella")
 async def autenticar_huella(
-    background_tasks: BackgroundTasks,  # Añadimos BackgroundTasks para ejecutar en segundo plano
+    background_tasks: BackgroundTasks,  # Añadimos BackgroundTasks para ejecutar tareas en segundo plano
     template: str = Form(...), 
     porteria: str = Form(...),  # Número de la portería recibido en la solicitud
 ):
-    
     # Convertir la huella en un vector numérico
     vector_huella = hex_to_vector(template).reshape(1, -1)
-    # registros = collection_huellas.find()
+    # Obtener todas las huellas almacenadas 
     registros = list(collection_huellas.find({}))
     if not registros:
         # Si no hay registros, registrar el acceso fallido
         background_tasks.add_task(registrar_acceso, None, porteria, False)
-        print("NO SE ENCONTRARON HUELLAS EN ESE CLUSTER")
-        return {"status": "No autenticado", "mensaje": "No se encontraron huellas en el cluster."}
+        print("Fingerprint database Empty")
+        return {"status": "No autenticado", "mensaje": "No se encontraron huellas en la base de datos."}
 
     # Variables para almacenar el mejor resultado
     mejor_similitud = float('inf')  # Queremos minimizar la distancia
@@ -101,10 +87,8 @@ async def autenticar_huella(
         stored_vectors = np.array(registro['templates'])  # Recuperar los vectores directamente
         # Repetimos el vector de huella ingresado para hacer comparaciones por lotes
         input_vectors = np.repeat(vector_huella, len(stored_vectors), axis=0)
-        
         # Comparar todas las huellas en bloque con el modelo Siamese
         distancias = model.predict([input_vectors, stored_vectors])
-
         # Encontrar la distancia mínima
         min_distancia = distancias.min()
         if min_distancia < mejor_similitud:
@@ -118,14 +102,14 @@ async def autenticar_huella(
         # Si autenticado, registrar el acceso exitoso
         background_tasks.add_task(registrar_acceso, cedula_autenticada, porteria, True)
         print("*** cedula autenticada: " + cedula_autenticada)
-        return{"valid": True}
-        #return {"status": "Autenticado", "Cedula": cedula_autenticada}
+        #return{"valid": True}
+        return {"status": "Autenticado", "Cedula": cedula_autenticada}
     else:
         # Si no autenticado, registrar el acceso fallido
         background_tasks.add_task(registrar_acceso, None, porteria, False)
         print("NO AUTENTICADO")
-        return{"valid": False}
-        # return {"status": "No autenticado"}
+        #return{"valid": False}
+        return {"status": "No autenticado"}
     
 # Función asíncrona para registrar el acceso
 async def registrar_acceso(cedula, porteria, autenticado):
