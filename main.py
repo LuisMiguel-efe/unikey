@@ -94,16 +94,18 @@ async def autenticar_huella(
         if min_distancia < mejor_similitud:
             mejor_similitud = min_distancia
             cedula_autenticada = registro['_id']
+            print(cedula_autenticada)
 
     # Definir un umbral para considerar una coincidencia (ajustar según rendimiento)
-    umbral_similitud = 0.1
-    print(mejor_similitud)
+    umbral_similitud = 0.01
+    print(f"Mejor similitud: {mejor_similitud}")
+    print(f"Cedula:  {cedula_autenticada}")
     if mejor_similitud < umbral_similitud:
         # Si autenticado, registrar el acceso exitoso
         background_tasks.add_task(registrar_acceso, cedula_autenticada, porteria, True)
-        print("*** cedula autenticada: " + cedula_autenticada)
-        #return{"valid": True}
+        print(f"*** cedula autenticada: {cedula_autenticada} Dist: {mejor_similitud}")
         return {"status": "Autenticado", "Cedula": cedula_autenticada}
+        #return{"valid": True}
     else:
         # Si no autenticado, registrar el acceso fallido
         background_tasks.add_task(registrar_acceso, None, porteria, False)
