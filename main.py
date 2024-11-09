@@ -1,4 +1,4 @@
-from fastapi import BackgroundTasks, FastAPI, Form 
+from fastapi import BackgroundTasks, FastAPI, Form, HTTPException, FastAPI 
 from pydantic import BaseModel
 import numpy as np
 from pymongo import MongoClient
@@ -13,7 +13,7 @@ app = FastAPI()
 client = MongoClient('mongodb+srv://luortiz:321@cluster0.n3xcu.mongodb.net/')
 db = client['bioaccess']
 collection_huellas = db['huellas']
-collection_accesos = db["accesos"]
+collection_accesos = db["acceso"]
 
 # Definir el path de los pesos guardados (modelo ML)
 model_path = 'siamese_model.keras'
