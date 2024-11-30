@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="IU-242.23726.103">
+    <data-source name="bioaccess@cluster0.n3xcu.mongodb.net" uuid="a3dae53a-454c-4da5-b2a0-c7706e79753e">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MONGO" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>luortiz</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

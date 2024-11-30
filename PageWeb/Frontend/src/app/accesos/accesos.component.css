@@ -1,0 +1,301 @@
+.tabla-elementos {
+  max-height: 400px; /* Altura máxima del contenedor */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  margin-top: 20px;
+  border: 3px solid #000000; /* Borde del contenedor */
+  border-radius: 8px; /* Esquinas redondeadas del contenedor */
+  box-shadow: 0px 2px 5px rgba(6, 228, 17, 0.2); /* Sombra sutil para el contenedor */
+}
+.tabla-elementos table {
+  align-items: center;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0px;
+  background-color: #968d8d;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.4); /* Sombra fosforescente */
+}
+
+.tabla-elementos th,
+.tabla-elementos td {
+  padding: 12px;
+  border: 1px solid #edeeef; /* Verde fosforescente */
+  color: #000000;
+}
+
+.tabla-elementos th {
+  color: white;
+  background: linear-gradient(135deg, rgb(74, 61, 255), rgb(136, 135, 135)); /* Degradado moderno */
+  font-weight: bold;
+}
+
+.tabla-elementos tbody tr:nth-child(even) {
+  background-color: #c4c4c4; /* Fila alternada */
+}
+
+.tabla-elementos tbody tr:hover {
+  background-color: #444;
+  color: #fffd82; /* Amarillo brillante */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tabla-elementos p {
+  color: #ff4081; /* Mensaje fosforescente */
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.accesos-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #0911a2;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .porteria-buttons {
+    display: flex;
+    justify-content: center; /* Centramos los botones */
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px 0;
+    margin-left: 90px;
+  }
+
+  .porteria-buttons button {
+    background: linear-gradient(135deg, rgb(74, 61, 255), rgb(255, 0, 0)); /* Degradado moderno */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px; /* Ajustamos el padding */
+    border-radius: 8px; /* Esquinas menos redondeadas */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  }
+
+  .porteria-buttons button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Efecto al hacer hover */
+  }
+
+  .porteria-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+
+  tr:hover {
+    background-color: #f9f9f9;
+  }
+
+
+  .report-buttons {
+    display: flex;
+    justify-content: center; /* Centramos los botones */
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px 0;
+    margin-left: 90px;
+  }
+
+  .report-buttons button {
+    background: linear-gradient(135deg, rgb(74, 61, 255), rgb(50, 50, 50)); /* Degradado moderno */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px; /* Ajustamos el padding */
+    border-radius: 8px; /* Esquinas menos redondeadas */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  }
+
+  .report-buttons button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Efecto al hacer hover */
+  }
+
+  .report-buttons button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .report-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /*Grafica*/
+  .chart-container {
+    display: none;
+    position: relative;
+    max-width: 600;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #0f00db;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .chart-container select {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333333;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .chart-container select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+  }
+
+  .chart-container canvas {
+    max-width: 100%; /* Asegura que el canvas no exceda el ancho del contenedor */
+    height: 400px; /* Altura del canvas */
+    margin-top: 1px; /* Espacio arriba de la gráfica */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #fff; /* Fondo blanco para el canvas */
+  }
+    /* Botones de menú gráfico */
+    .grafica-buttons {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px; /* Espacio entre botones */
+      padding: 5px 0;
+    }
+
+    .grafica-buttons button {
+      background: linear-gradient(135deg, #4a3dff, #a5a5a5); /* Degradado elegante */
+      color: #ffffff;
+      border: none;
+      padding: 10px 15px; /* Espacio interno */
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    }
+
+    .grafica-buttons button:hover {
+      transform: scale(1.05); /* Efecto al pasar el mouse */
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Botón seleccionado */
+    .grafica-buttons .active {
+      background: linear-gradient(135deg, #fbfbff, #e4e4e4); /* Color destacado */
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+      color: #ffffff;
+    }
+    /*Botones deshabilitados*/
+    .grafica-buttons button:disabled {
+      opacity: 0.2;           /* Hacer el botón más opaco */
+      cursor: not-allowed;    /* Cambiar el cursor */
+      pointer-events: none;   /* Desactivar interacciones, incluyendo hover */
+    }
+
+    .grafica-buttons button:disabled:hover {
+      background-color: inherit; /* Mantener el color sin cambio en hover */
+    }
+
+  .dashboard-container {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f4f4f4; /* Fondo suave para todo el contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kpis-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adaptable a diferentes tamaños de pantalla */
+    gap: 5px; /* Espacio entre los KPI */
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  .kpi {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    transition: box-shadow 0.3s ease;
+  }
+
+  .kpi:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Aumentar la sombra al pasar el mouse */
+  }
+
+  .kpi h4 {
+    margin: 0;
+    font-size: 14px;
+    color: #333; /* Color oscuro para el título */
+    font-style: bold;
+  }
+
+  .kpi p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4a3dff; /* Color verde para los valores */
+    margin: 5px 0 0 0;
+  }
+
+  /* Estilo del input de fecha */
+  input[type="date"] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 125px;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+

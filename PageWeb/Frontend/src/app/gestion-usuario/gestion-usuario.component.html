@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-title>Gestión de Usuarios</mat-card-title>
+
+  <mat-card-content class="tabla-elementos">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- Columnas de la tabla -->
+        <ng-container matColumnDef="cedula">
+          <th mat-header-cell *matHeaderCellDef> Cédula </th>
+          <td mat-cell *matCellDef="let element" (click)="selectUsuario(element)">
+            {{element.cedula}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element" (click)="selectUsuario(element)">
+            {{element.nombre}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipo">
+          <th mat-header-cell *matHeaderCellDef> Tipo </th>
+          <td mat-cell *matCellDef="let element" (click)="selectUsuario(element)">
+            {{element.tipo}}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  </mat-card-content>
+
+  <mat-card-content class="form-container">
+    <div class="form-column">
+      <form [formGroup]="usuarioForm">
+        <mat-form-field>
+          <mat-label>Cédula</mat-label>
+          <input matInput formControlName="cedula" />
+          <mat-error *ngIf="hasErrors('cedula', 'pattern')">
+            Cédula debe ser numérica.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="tipo">
+            <mat-option value="Estudiante">Estudiante</mat-option>
+            <mat-option value="Administrativo">Administrativo</mat-option>
+            <mat-option value="Profesor">Profesor</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+
+    <div *ngIf="isCreating" class="gif-container">
+      <img src="assets/huella dactilar.gif" alt="Cargando..." />
+      <p class="loading-text">Creando usuario...</p>
+    </div>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="actualizarUsuario()" [disabled]="!usuarioForm.valid || !selectedUsuario">Actualizar</button>
+    <button mat-raised-button color="warn" (click)="eliminarUsuario()" [disabled]="!selectedUsuario">Eliminar</button>
+    <button mat-raised-button color="accent" (click)="crearUsuario()">Crear</button>
+    <button mat-raised-button (click)="limpiarFormulario()">Limpiar</button>
+  </mat-card-actions>
+</mat-card>

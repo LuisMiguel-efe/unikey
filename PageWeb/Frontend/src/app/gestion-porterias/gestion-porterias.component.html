@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-title>Gestión de Porterías</mat-card-title>
+  <mat-card-content class="tabla-elementos">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element" (click)="selectPorteria(element)">
+          {{ element.id }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element" (click)="selectPorteria(element)">
+          {{ element.nombre }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mac">
+        <th mat-header-cell *matHeaderCellDef> MAC </th>
+        <td mat-cell *matCellDef="let element" (click)="selectPorteria(element)">
+          {{ element.mac }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+
+  <mat-card-content>
+    <form [formGroup]="porteriaForm">
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="id" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>MAC</mat-label>
+        <input matInput formControlName="mac" />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="actualizarPorteria()" [disabled]="!porteriaForm.valid || !selectedPorteria">Actualizar</button>
+    <button mat-raised-button color="warn" (click)="eliminarPorteria()" [disabled]="!selectedPorteria">Eliminar</button>
+    <button mat-raised-button color="accent" (click)="crearPorteria()">Crear</button>
+    <button mat-raised-button (click)="limpiarFormulario()">Limpiar</button>
+  </mat-card-actions>
+</mat-card>
+

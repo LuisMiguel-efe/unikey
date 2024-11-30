@@ -1,0 +1,10 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh; ;
+  }
+  
+  img {
+    width: 150px; /* Ajusta el tamaño de la huella si es necesario */
+  }

@@ -1,0 +1,28 @@
+.huella-animacion {
+    color: blue;
+    font-weight: bold;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+  .huella-exito {
+    color: green;
+    font-weight: bold;
+  }
+  
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  .wider-form {
+    width: 500px; /* Ajusta este valor según sea necesario */
+  }
+  .wider-elements {
+    width: 460px; /* Ajusta este valor según sea necesario */
+  }
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los botones con espacio entre ellos */
+    margin-top: 20px; /* Añade un margen superior para separar los botones del contenido anterior */
+  }

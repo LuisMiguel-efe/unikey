@@ -1,0 +1,101 @@
+.admin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: white;
+    color: #0911a2;
+    font-family: 'Roboto', sans-serif;
+    padding: 0; /* Eliminamos el espacio superior */
+    box-sizing: border-box;
+    margin: 0;
+    position: relative; /* Necesario para el posicionamiento del footer */
+  }
+  
+  /* Main Section */
+  main {
+    text-align: center;
+    margin-top: -200px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 0 0 30px 0; /* Eliminamos margen superior */
+    text-transform: uppercase;
+  }
+  
+  .menu-options {
+    display: flex;
+    justify-content: center; /* Centramos los botones */
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px 0;
+    margin-left: 90px;
+  }
+  
+  .menu-options button {
+    background: linear-gradient(135deg, rgb(74, 61, 255), rgb(255, 0, 0)); /* Degradado moderno */
+    color: #ffffff;
+    border: none;
+    padding: 15px 30px; /* Ajustamos el padding */
+    border-radius: 8px; /* Esquinas menos redondeadas */
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+  }
+  
+  .menu-options button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Efecto al hacer hover */
+  }
+  
+  .menu-options button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Footer */
+  footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 40px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Alineamos el contenido a la derecha */
+    align-items: center;
+    box-sizing: border-box;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  footer p {
+    margin: 0;
+    margin-left: 10px; /* Espacio entre los textos */
+  }
+  
+  footer .user-info,
+  footer .date-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alineamos el texto a la derecha */
+  }
+  
+  /* General Styles */
+  body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  

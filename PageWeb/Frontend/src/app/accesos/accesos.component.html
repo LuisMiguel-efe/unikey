@@ -1,0 +1,89 @@
+<div class="accesos-container">
+  <h2>Selecciona una Portería</h2>
+  <div class="porteria-buttons">
+    <button (click)="seleccionarPorteria(1)">Portería 1</button>
+    <button (click)="seleccionarPorteria(2)">Portería 2</button>
+    <button (click)="seleccionarPorteria(0)">General</button>
+  </div>
+  <div class="tabla-elementos" *ngIf="selectedPorteria !== null">
+    <table *ngIf="accesos.length > 0">
+      <thead>
+        <tr>
+          <th>Cédula</th>
+          <th>Portería</th>
+          <th>Fecha y Hora</th>
+          <th>Autenticado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let acceso of accesos">
+          <td>{{ acceso.cedula }}</td>
+          <td>{{ acceso.porteria }}</td>
+          <td>{{ acceso.fecha_hora }}</td>
+          <td>{{ acceso.autenticado ? 'Sí' : 'No' }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="accesos.length === 0">No hay accesos registrados para esta portería.</p>
+
+  </div>
+  <div class="report-buttons">
+    <button (click)="generarReportes()" [disabled]="accesos.length === 0">Ver estadísticas</button>
+  </div>
+  <div id="chart-container" class="chart-container">
+    <select [(ngModel)]="selectedMonth" (change)="onMonthChange()">
+      <option value="">Todos los meses</option>
+      <option value="Jan">Enero</option>
+      <option value="Feb">Febrero</option>
+      <option value="Mar">Marzo</option>
+      <option value="Apr">Abril</option>
+      <option value="May">Mayo</option>
+      <option value="Jun">Junio</option>
+      <option value="Jul">Julio</option>
+      <option value="Aug">Agosto</option>
+      <option value="Sep">Septiembre</option>
+      <option value="Oct">Octubre</option>
+      <option value="Nov">Noviembre</option>
+      <option value="Dec">Diciembre</option>
+    </select>
+    <!-- Selector de fecha (input tipo date) -->
+    <div *ngIf="showSelectors">
+      <input type="date" id="fecha" name="fecha" [(ngModel)]="selectedDate" (change)="generarReportes()">
+    </div>
+
+    <!-- Botones opciones de grafico-->
+    <div class="grafica-buttons">
+      <button #accesosBtn (click)="obtenerTipo('first')">Accesos</button>
+      <button #porteriasBtn (click)="obtenerTipo('bar')">Porterias</button>
+      <button #tendenciasBtn (click)="obtenerTipo('line')">Tendencias</button>
+      <button #porcentajeBtn (click)="obtenerTipo('pie')">Porcentaje</button>
+      <button #histogramaBtn (click)="obtenerTipo('histogram')">Histograma</button>
+    </div>
+
+
+    <canvas id="myChart" width="600" height="400" style="display:none;" *ngIf="accesos.length > 0"></canvas>
+    <canvas id="myChart2" width="800" height="510" style="display:none;" *ngIf="accesos.length > 0"></canvas>
+
+    <div class="dashboard-container">
+      <!-- KPIs -->
+      <div class="kpis-container">
+        <div class="kpi">
+          <h4>Total Accesos</h4>
+          <p>{{ totalAccesos }}</p>
+        </div>
+        <div class="kpi">
+          <h4>Porcentaje Autenticados</h4>
+          <p>{{ porcentajeAutenticados | number: '1.2-2' }}%</p>
+        </div>
+        <div class="kpi">
+          <h4>Día con más Accesos</h4>
+          <p>{{ diaMayorAcceso }}</p>
+        </div>
+        <div class="kpi">
+          <h4>Portería más Utilizada</h4>
+          <p>{{ porteriaFrecuente }}</p>
+        </div>
+      </div>
+
+  </div>
+</div>

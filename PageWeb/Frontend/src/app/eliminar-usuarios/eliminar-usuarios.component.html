@@ -1,0 +1,35 @@
+<div class="center-container">
+    <form [formGroup]="eliminarForm" class="eliminar-form wider-form">
+      <mat-card>
+        <mat-card-title>Eliminar Usuario</mat-card-title>
+        <mat-card-content>
+          <div>
+            <mat-form-field appearance="fill" class="wider-elements">
+              <mat-label>Cédula</mat-label>
+              <input matInput id="cedula" formControlName="cedula" type="text" />
+              <mat-error *ngIf="hasErrors('cedula', 'required')">
+                Cédula es requerida.
+              </mat-error>
+              <mat-error *ngIf="hasErrors('cedula', 'pattern')">
+                Cédula debe ser numérica.
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div>
+            <button mat-raised-button color="warn" type="button" (click)="onEliminar()">
+              Eliminar Usuario
+            </button>
+          </div>
+  
+          <div *ngIf="eliminando" class="eliminando-animacion">
+            <app-loading-spinner></app-loading-spinner>
+          </div>
+  
+          <div *ngIf="eliminacionExitosa" class="eliminacion-exito">Usuario eliminado con éxito</div>
+          <div *ngIf="eliminacionFallida" class="eliminacion-error">Error al eliminar el usuario</div>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
+  

@@ -1,0 +1,62 @@
+
+<div class="center-container">
+<form [formGroup]="registroForm" class="registro-form wider-form">
+  <mat-card >
+    <mat-card-title>Registro de Datos</mat-card-title>
+    <mat-card-content >
+      <div>
+        <mat-form-field appearance="fill" class="wider-elements">
+          <mat-label>Cédula</mat-label>
+          <input matInput id="cedula" formControlName="cedula" type="text" />
+          <mat-error *ngIf="hasErrors('cedula', 'required')">
+            Cédula es requerida.
+          </mat-error>
+          <mat-error *ngIf="hasErrors('cedula', 'pattern')">
+            Cédula debe ser numérica.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill" class="wider-elements">
+          <mat-label>Nombre</mat-label>
+          <input matInput id="nombre" formControlName="nombre" type="text" />
+          <mat-error *ngIf="hasErrors('nombre', 'required')">
+            Nombre es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill" class="wider-elements">
+          <mat-label>Tipo de Usuario</mat-label>
+          <mat-select id="tipoUsuario" formControlName="tipoUsuario">
+            <mat-option value="estudiante">Estudiante</mat-option>
+            <mat-option value="administrativo">Administrativo</mat-option>
+          </mat-select>
+          <mat-error *ngIf="hasErrors('tipoUsuario', 'required')">
+            Tipo de usuario es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+     
+        <div class="button-container">
+          <button mat-raised-button color="primary" type="button" (click)="onRegistrarHuella()">
+            Agregar Huella
+          </button>
+          <button mat-raised-button color="primary" type="button" (click)="regresar()">
+            Regresar
+          </button>
+        </div>
+        <div *ngIf="tomandoHuella" class="huella-animacion">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <div *ngIf="huellaRegistrada" class="huella-exito">Huella registrada</div>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</form>
+</div>

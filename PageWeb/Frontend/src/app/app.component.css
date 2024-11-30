@@ -1,0 +1,44 @@
+.banner {
+    width: 100%;
+    background-color: #f6f6f6; /* Color de fondo del banner */
+    color: rgb(255, 255, 255); /* Color del texto */
+    text-align: center; /* Centrar el texto */
+    padding: 15px 0; /* Espaciado vertical */
+    font-size: 24px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita */
+    height: 40px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+  }
+  
+  .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px); /* Altura completa de la ventana menos el banner */
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 40px;
+    background: linear-gradient(135deg, rgb(74, 61, 255), rgb(255, 0, 0));;
+    box-sizing: border-box;
+    border-bottom: 2px solid rgb(12, 4, 255);
+    box-shadow: 10px 2px 5px rgba(255, 0, 0, 0.942);
+    margin: 0; /* Aseguramos que no haya margen superior */
+    padding: 0;
+}
+
+.header-left img {
+  height: 150px;
+}
+
+.header-right h4 {
+  color: rgb(255, 255, 255);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  margin-right: 200px; /* Eliminamos márgenes */
+}

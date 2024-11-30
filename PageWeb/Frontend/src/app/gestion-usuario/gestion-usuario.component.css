@@ -1,0 +1,198 @@
+.viewport {
+  height: 300px; /* Ajusta esta altura según sea necesario */
+  overflow: auto; /* Permite el desplazamiento */
+}
+.tabla-elementos {
+  max-height: 400px; /* Altura máxima del contenedor */
+  overflow-y: auto; /* Permite el desplazamiento vertical */
+  margin-top: 0px;
+  border: 1px solid #000000; /* Borde del contenedor */
+  border-radius: 8px; /* Esquinas redondeadas del contenedor */
+}
+.tabla-elementos table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: hsl(0, 0%, 89%);
+  border-radius: 8px;
+  overflow: hidden;
+
+}
+
+.tabla-elementos th,
+.tabla-elementos td {
+  padding: 12px;
+  border: 1px solid #edeeef; /* Verde fosforescente */
+  color: #000000;
+
+}
+
+.tabla-elementos th {
+  color: white;
+  background: linear-gradient(135deg, rgb(74, 61, 255), rgb(136, 135, 135));
+  font-weight: bold;
+}
+
+.tabla-elementos tbody tr:nth-child(even) {
+  background-color: #3f3f3f; /* Fila alternada */
+}
+
+.tabla-elementos tbody tr:hover {
+  background-color: #eeeeee;
+  color: #fffd82; /* Amarillo brillante */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tabla-elementos p {
+  color: #ff4081; /* Mensaje fosforescente */
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+/* Estilos generales del mat-card */
+mat-card {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: #f7f7f7;
+}
+
+/* Estilo para el título del mat-card */
+mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3f51b5;
+}
+
+/* Estilo de tabla */
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Encabezados de tabla */
+mat-header-cell {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  background-color: #3f51b5;
+}
+
+/* Celdas de tabla */
+mat-cell {
+  font-size: 14px;
+  padding: 12px;
+  text-align: center;
+}
+
+tr:hover {
+  background-color:  #827e7e;
+  cursor: pointer;
+}
+
+
+
+/* Estilo de los inputs en el formulario */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+mat-label {
+  font-size: 14px;
+  color: #3f51b5;
+}
+
+/* Botones en el mat-card-actions */
+mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  min-width: 120px;
+}
+
+/* Estilo para botones según el color */
+mat-raised-button[color="primary"] {
+  background-color: #3f51b5;
+}
+
+mat-raised-button[color="warn"] {
+  background-color: #e53935;
+}
+
+mat-raised-button[color="accent"] {
+  background-color: #ff4081;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+mat-card-content {
+  margin-bottom: 20px; /* Añadir margen inferior para separar los bloques */
+}
+
+
+@media only screen and (max-width: 600px) {
+  mat-card {
+    padding: 10px;
+  }
+
+  mat-card-title {
+    font-size: 20px;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  mat-card-actions {
+    flex-direction: column;
+  }
+
+  button {
+    margin-bottom: 10px;
+  }
+}
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form-column {
+  width: 70%;
+}
+
+.gif-container {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gif-container img {
+  max-width: 130px;
+  height: auto;
+  padding-top: 40px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+.loading-text {
+  font-size: 20px;
+  color: #555;
+  margin-top: 4px;
+  text-align: center;
+}
